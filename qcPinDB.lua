@@ -7335,6 +7335,8 @@ qcPinDB = {
 	},
 	[1367] = {--[[ Battle of Dazor`alor Boralus ]]--
 	},
+	[1409] = {--[[ Exile's Reach]]--
+	},
 	[1411] = {--[[ Durotar  Classic]]--
 	},
 	[1412] = {--[[ Mulgore  Classic]]--
@@ -7529,6 +7531,8 @@ qcPinDB = {
 	},
 	[1524] = {--[[ Deepsea Slave Pen ]]--
 	},
+	[1525] = {--[[ Revendreth ]]--
+	},
 	[1527] = {--[[ Uldum 8.3 ]]--
 		{0,1,160957,"Arianna Swiftsand",54.6,34.0,{58291,58239}},
 		{0,1,159544,"Arik Scorpidsting",40.0,21.2,{58781,58782,57873}},
@@ -7573,9 +7577,13 @@ qcPinDB = {
 	},
 	[1535] = {--[[ Durotar The Dranosh`ar Blockade ]]--
 	},
+	[1536] = {--[[ Maldraxxus ]]--
+	},
 	[1540] = {--[[ Halls of Origination (The Vault of Light) 8.3 Scenario ]]--
 	},
 	[1542] = {--[[ Halls of Origination (The Maker`s Rise) 8.3 Scenario ]]--
+	},
+	[1543] = {--[[ The Maw ]]--
 	},
 	[1544] = {--[[ Mogu`Shan Palace (The Gilded Foyer) 8.3 Scenario ]]--
 	},
@@ -7585,8 +7593,14 @@ qcPinDB = {
 	},
 	[1549] = {--[[ Mogu`Shan Vaults (Hall of Shapers) 8.3 Scenario]]--
 	},
+	[1565] = {--[[ Ardeneald ]]--
+	},
+	[1569] = {--[[ Bastion ]]--
+	},
 	[1573] = {--[[ Mechagon City 8.3 ]]--
 	},
 	[1574] = {--[[ Mechagon City Under Junk 8.3]]--
+	},
+	[1670] = {--[[ Oribos, the Eternal City]]--
 	},
 	}
