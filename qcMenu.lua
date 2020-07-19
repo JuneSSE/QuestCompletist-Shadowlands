@@ -173,6 +173,15 @@ qcMenu={
 {text=qcL.ZULDAZAR,isTitle=false,notCheckable=false,hasArrow=false,arg1=1082,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
 --{text=qcL.TEMP,isTitle=false,notCheckable=false,hasArrow=false,arg1=1114,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
 {text=qcL.BFAUNCATEQUEST,isTitle=false,notCheckable=false,hasArrow=false,arg1=1150,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end}}},
+{text=stringformat("   %s",qcL.SHADOWLANDS),isTitle=false,notCheckable=true,hasArrow=true,menuList={
+{text=qcL.ARDENWEALD,isTitle=false,notCheckable=false,hasArrow=false,arg1=1200,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
+{text=qcL.BASTION,isTitle=false,notCheckable=false,hasArrow=false,arg1=1201,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
+{text=qcL.EXILESREACH,isTitle=false,notCheckable=false,hasArrow=false,arg1=1202,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
+{text=qcL.MALDRAXXUS,isTitle=false,notCheckable=false,hasArrow=false,arg1=1203,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
+{text=qcL.ORIBOSTHEETERNALCITY,isTitle=false,notCheckable=false,hasArrow=false,arg1=1204,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
+{text=qcL.REVENDRETH,isTitle=false,notCheckable=false,hasArrow=false,arg1=1205,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
+{text=qcL.THEMAW,isTitle=false,notCheckable=false,hasArrow=false,arg1=1206,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
+{text=qcL.SHADOWLANDSUNCATEQUEST,isTitle=false,notCheckable=false,hasArrow=false,arg1=1290,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end}}},
 {text=stringformat("   %s",qcL.MISCELLANEOUS),isTitle=false,notCheckable=true,hasArrow=true,menuList={
 {text=stringformat("   %s",qcL.CLASSCAMPAINS),isTitle=false,notCheckable=true,hasArrow=true,menuList={
 {text=stringformat("%s%s|r","|cFFC41F3B",qcL.DEATHKNIGHT),isTitle=false,notCheckable=false,hasArrow=false,arg1=52,func=function(button,arg1)qcProcessMenuSelection(button,arg1);end},
