@@ -1,7 +1,7 @@
 # QuestCompletist-Shadowlands
 QuestCompletist-Shadowlands Beta
 
-The primary goal atm is make the core abilitys of this addon work
-Reporting errors whit quests is not a priority.
+The primary goal atm is geting the core abilitys of this addon working
+Reporting errors in Quest are not anpriority sinze the data needs to be complettly redone when wowhead db have become moore accurate
 
 NB! This code is not tested ingame sinze i domt have beta access 
