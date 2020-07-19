@@ -663,9 +663,9 @@ function qcUpdateTooltip(index)
 					end
 				end
 				if not (qcInitiatorMapLevel == 0) then
-					qcQuestInformationTooltip:AddDoubleLine("  - Location:", stringFormat("%s%s, Floor %d @ %.1f,%.1f",COLOUR_HUNTER,tostring(GetMapNameByID(qcInitiatorUiMapID) or nil),qcInitiatorMapLevel,qcInitiatorX,qcInitiatorY),nil,nil,nil,true)
+					qcQuestInformationTooltip:AddDoubleLine("  - Location:", stringFormat("%s%s, Floor %d @ %.1f,%.1f",COLOUR_HUNTER,tostring(C_Map.GetMapInfo(qcInitiatorUiMapID) or nil),qcInitiatorMapLevel,qcInitiatorX,qcInitiatorY),nil,nil,nil,true)
 				else
-					qcQuestInformationTooltip:AddDoubleLine("  - Location:", stringFormat("%s%s @ %.1f,%.1f",COLOUR_HUNTER,tostring(GetMapNameByID(qcInitiatorUiMapID) or nil),qcInitiatorX,qcInitiatorY),nil,nil,nil,true)
+					qcQuestInformationTooltip:AddDoubleLine("  - Location:", stringFormat("%s%s @ %.1f,%.1f",COLOUR_HUNTER,tostring(C_Map.GetMapInfo(qcInitiatorUiMapID) or nil),qcInitiatorX,qcInitiatorY),nil,nil,nil,true)
 				end
 			end
 		end
