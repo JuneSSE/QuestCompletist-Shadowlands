@@ -1,5 +1,5 @@
-# QuestCompletist-Shadowlands Beta
-QuestCompletist-Shadowlands Beta
+# QuestCompletist Shadowlands Beta
+QuestCompletist Shadowlands Beta
 
 The primary goal atm is geting the core abilitys of this addon working
 Reporting errors in Quest are not an priority sinze the data needs to be 
