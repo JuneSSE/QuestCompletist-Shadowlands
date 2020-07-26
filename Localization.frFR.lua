@@ -116,12 +116,14 @@ qcLocalize = {
 	HELLFIRERAMPARTS = "Remparts des Flammes infernales",
 	HERBALISM = "Herboristerie",
 	HIDECOMPLETEDQUESTS = "Cacher les quêtes achevées",
+	HIDEDAILYQUEST = "Hide Daily Quests",
 	HIDEINPROGRESSQUESTS = "Cacher les quêtes en cours",
 	HIDELOWLEVELQUESTS = "Cacher les quêtes de bas niveau",
 	HIDENONACTIVESEASONALQUESTS = "Cacher les quêtes saisonnière non disponible",
 	HIDEOTHERFACTIONQUESTS = "Cacher les quêtes des autres factions",
 	HIDEOTHERPROFESSIONQUESTS = "Cacher les quêtes des autres métiers",
 	HIDEOTHERRACEANDCLASSQUESTS = "Cacher les quêtes des autres classe / races                                                  |cff1784d1Translated by: Deadse-Voljin EU|r",
+	HIDEWORLDQUEST = "Hide World Quests",
 	HIGHMAUL = "Highmaul", -- Requires localization
 	HILLSBRADFOOTHILLS = "Contreforts de Hautebrande",
 	HOUROFTWILIGHT = "L’Heure du Crépuscule",
@@ -445,9 +447,17 @@ qcLocalize = {
 	NYALOTHATHEWALKINGCITY = "Ny'alotha, The Waking City",
 	VISIONSOFNZOTH = "Visions of N'Zoth",
 	BLACKEMPIRECAMPAIGN = "Black Empire Campaign",
-	HIDEWORLDQUEST = "Hide Daily and World Quests",
-	HIDECOMPLETEDQUESTS = "Hide Completed Quests",
 	WORLDQUEST = "World Quests",
+		-- Shadowlands Code
+	SHADOWLANDS = "Shadowlands",
+	ARDENWEALD = "Ardenweald",
+	BASTION = "Bastion",
+	EXILESREACH	= "Exile's Reach",
+	MALDRAXXUS = "Maldraxxus",
+	ORIBOSTHEETERNALCITY = "Oribos, the Eternal City",
+	REVENDRETH = "Revendreth",
+	THEMAW = "The Maw",
+	SHADOWLANDSUNCATEQUEST = "Shadowlands Uncategorized Quests",
 }
 
 end

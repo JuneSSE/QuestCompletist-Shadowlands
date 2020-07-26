@@ -116,12 +116,14 @@ qcLocalize = {
 	HELLFIRERAMPARTS = "地獄火壁壘", -- Needs review
 	HERBALISM = "草藥學", -- Needs review
 	HIDECOMPLETEDQUESTS = "隱藏已完成的任務", -- Needs review
+	HIDEDAILYQUEST = "Hide Daily Quests",
 	HIDEINPROGRESSQUESTS = "隱藏進行中的任務", -- Needs review
 	HIDELOWLEVELQUESTS = "隱藏低等級的任務", -- Needs review
 	HIDENONACTIVESEASONALQUESTS = "隱藏尚未開始的季節性任務", -- Needs review
 	HIDEOTHERFACTIONQUESTS = "隱藏其他陣營的任務", -- Needs review
 	HIDEOTHERPROFESSIONQUESTS = "隱藏其他專業的任務", -- Needs review
 	HIDEOTHERRACEANDCLASSQUESTS = "隱藏其他種族和職業任務", -- Needs review
+	HIDEWORLDQUEST = "Hide World Quests",
 	HIGHMAUL = "Highmaul", -- Requires localization
 	HILLSBRADFOOTHILLS = "希爾斯布萊德丘陵",
 	HOUROFTWILIGHT = "暮光之時", -- Needs review
@@ -445,9 +447,17 @@ qcLocalize = {
 	NYALOTHATHEWALKINGCITY = "Ny'alotha, The Waking City",
 	VISIONSOFNZOTH = "Visions of N'Zoth",
 	BLACKEMPIRECAMPAIGN = "Black Empire Campaign",
-	HIDEWORLDQUEST = "Hide Daily and World Quests",
-	HIDECOMPLETEDQUESTS = "Hide Completed Quests",
 	WORLDQUEST = "World Quests",
+	-- Shadowlands Code
+	SHADOWLANDS = "Shadowlands",
+	ARDENWEALD = "Ardenweald",
+	BASTION = "Bastion",
+	EXILESREACH	= "Exile's Reach",
+	MALDRAXXUS = "Maldraxxus",
+	ORIBOSTHEETERNALCITY = "Oribos, the Eternal City",
+	REVENDRETH = "Revendreth",
+	THEMAW = "The Maw",
+	SHADOWLANDSUNCATEQUEST = "Shadowlands Uncategorized Quests",
 }
 
 end

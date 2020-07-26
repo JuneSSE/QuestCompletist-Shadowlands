@@ -116,12 +116,14 @@ qcLocalize = {
 	HELLFIRERAMPARTS = "Бастионы Адского Пламени",
 	HERBALISM = "Травничество",
 	HIDECOMPLETEDQUESTS = "Скрывать выполненные задания",
+	HIDEDAILYQUEST = "Hide Daily Quests",
 	HIDEINPROGRESSQUESTS = "Скрывать выполняемые в данный момент задания",
 	HIDELOWLEVELQUESTS = "Скрывать задания низкого уровня",
 	HIDENONACTIVESEASONALQUESTS = "Скрывать неактивные сезонные задания",
 	HIDEOTHERFACTIONQUESTS = "Скрывать задания других фракций",
 	HIDEOTHERPROFESSIONQUESTS = "Скрывать задания других профессий",
 	HIDEOTHERRACEANDCLASSQUESTS = "Скрывать задания других рас и классов",
+	HIDEWORLDQUEST = "Hide World Quests",
 	HIGHMAUL = "Highmaul", -- Requires localization
 	HILLSBRADFOOTHILLS = "Предгорья Хилсбрада",
 	HOUROFTWILIGHT = "Время Сумерек",
@@ -445,9 +447,17 @@ qcLocalize = {
 	NYALOTHATHEWALKINGCITY = "Ny'alotha, The Waking City",
 	VISIONSOFNZOTH = "Visions of N'Zoth",
 	BLACKEMPIRECAMPAIGN = "Black Empire Campaign",
-	HIDEWORLDQUEST = "Hide Daily and World Quests",
-	HIDECOMPLETEDQUESTS = "Hide Completed Quests",
 	WORLDQUEST = "World Quests",
+		-- Shadowlands Code
+	SHADOWLANDS = "Shadowlands",
+	ARDENWEALD = "Ardenweald",
+	BASTION = "Bastion",
+	EXILESREACH	= "Exile's Reach",
+	MALDRAXXUS = "Maldraxxus",
+	ORIBOSTHEETERNALCITY = "Oribos, the Eternal City",
+	REVENDRETH = "Revendreth",
+	THEMAW = "The Maw",
+	SHADOWLANDSUNCATEQUEST = "Shadowlands Uncategorized Quests",
 	}
 
 end

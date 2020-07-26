@@ -116,12 +116,14 @@ qcLocalize = {
 	HELLFIRERAMPARTS = "Murallas de Fuego Infernal", -- Needs review
 	HERBALISM = "Recolectar hierbas", -- Needs review
 	HIDECOMPLETEDQUESTS = "Esconder misiones completadas", -- Needs review
+	HIDEDAILYQUEST = "Hide Daily Quests",
 	HIDEINPROGRESSQUESTS = "Esconder misiones en progreso", -- Needs review
 	HIDELOWLEVELQUESTS = "Esconder misiones de bajo nivel", -- Needs review
 	HIDENONACTIVESEASONALQUESTS = "Esconder misiones inactivas de festividades", -- Needs review
 	HIDEOTHERFACTIONQUESTS = "Esconder misiones de otras facciones", -- Needs review
 	HIDEOTHERPROFESSIONQUESTS = "Esconder misiones de otras profesiones", -- Needs review
 	HIDEOTHERRACEANDCLASSQUESTS = "Esconder misiones de otras razas y clases", -- Needs review
+	HIDEWORLDQUEST = "Hide World Quests",
 	HIGHMAUL = "Highmaul", -- Requires localization
 	HILLSBRADFOOTHILLS = "Laderas de Trabalomas",
 	HOUROFTWILIGHT = "Hora del Crepúsculo", -- Needs review
@@ -446,9 +448,17 @@ qcLocalize = {
 	NYALOTHATHEWALKINGCITY = "Ny'alotha, The Waking City",
 	VISIONSOFNZOTH = "Visions of N'Zoth",
 	BLACKEMPIRECAMPAIGN = "Black Empire Campaign",
-	HIDEWORLDQUEST = "Hide Daily and World Quests",
-	HIDECOMPLETEDQUESTS = "Hide Completed Quests",
 	WORLDQUEST = "World Quests",
+		-- Shadowlands Code
+	SHADOWLANDS = "Shadowlands",
+	ARDENWEALD = "Ardenweald",
+	BASTION = "Bastion",
+	EXILESREACH	= "Exile's Reach",
+	MALDRAXXUS = "Maldraxxus",
+	ORIBOSTHEETERNALCITY = "Oribos, the Eternal City",
+	REVENDRETH = "Revendreth",
+	THEMAW = "The Maw",
+	SHADOWLANDSUNCATEQUEST = "Shadowlands Uncategorized Quests",
 }
 
 end

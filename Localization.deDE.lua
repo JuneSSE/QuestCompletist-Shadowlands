@@ -116,15 +116,14 @@ qcLocalize = {
 	HELLFIRERAMPARTS = "Höllenfeuerbollwerk",
 	HERBALISM = "Kräuterkunde",
 	HIDECOMPLETEDQUESTS = "Verstecke abgeschlossene Quests",
-	WORLDQUEST = "World Quests",
-	HIDEDAILYANDWORLD = "Hide Daily and World Quests",
+	HIDEDAILYQUEST = "Verstecke Tägliche Quests",
 	HIDEINPROGRESSQUESTS = "Verstecke laufende Quests",
 	HIDELOWLEVELQUESTS = "Verstecke niedrigstufige Quests",
 	HIDENONACTIVESEASONALQUESTS = "Verstecke nicht aktive saisonale Quests",
 	HIDEOTHERFACTIONQUESTS = "Verstecke Quests der anderen Fraktion",
 	HIDEOTHERPROFESSIONQUESTS = "Verstecke Quests anderer Berufe",
 	HIDEOTHERRACEANDCLASSQUESTS = "Verstecke Quests anderer Rassen und Klassen",
-	HIDEWORLDQUEST = "Hide Daily and World Quests",
+	HIDEWORLDQUEST = "Verstecke Weltquest",
 	HIGHMAUL = "Highmaul", -- Requires localization
 	HILLSBRADFOOTHILLS = "Vorgebirge des Hügellands",
 	HOUROFTWILIGHT = "Stunde des Zwielichts",
@@ -448,6 +447,17 @@ qcLocalize = {
 	NYALOTHATHEWALKINGCITY = "Ny'alotha, The Waking City",
 	VISIONSOFNZOTH = "Visions of N'Zoth",
 	BLACKEMPIRECAMPAIGN = "Black Empire Campaign",
+	WORLDQUEST = "World Quests",
+		-- Shadowlands Code
+	SHADOWLANDS = "Shadowlands",
+	ARDENWEALD = "Ardenweald",
+	BASTION = "Bastion",
+	EXILESREACH	= "Exile's Reach",
+	MALDRAXXUS = "Maldraxxus",
+	ORIBOSTHEETERNALCITY = "Oribos, the Eternal City",
+	REVENDRETH = "Revendreth",
+	THEMAW = "The Maw",
+	SHADOWLANDSUNCATEQUEST = "Shadowlands Uncategorized Quests",
 }
 
 end

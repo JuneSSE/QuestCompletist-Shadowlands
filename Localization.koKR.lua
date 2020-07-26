@@ -116,12 +116,14 @@ qcLocalize = {
 	HELLFIRERAMPARTS = "지옥불 성루",
 	HERBALISM = "약초채집", -- Needs review
 	HIDECOMPLETEDQUESTS = "완료된 퀘스트 숨김", -- Needs review
+	HIDEDAILYQUEST = "Hide Daily Quests",
 	HIDEINPROGRESSQUESTS = "진행중인 퀘스트 숨김", -- Needs review
 	HIDELOWLEVELQUESTS = "저레벨 퀘스트 숨김", -- Needs review
 	HIDENONACTIVESEASONALQUESTS = "진행중이지 않은 계절 축제 퀘스트 숨김", -- Needs review
 	HIDEOTHERFACTIONQUESTS = "상대진영 퀘스트 숨김", -- Needs review
 	HIDEOTHERPROFESSIONQUESTS = "다른 전문기술 퀘스트 숨김", -- Needs review
 	HIDEOTHERRACEANDCLASSQUESTS = "다른 종족 및 직업 퀘스트 숨김", -- Needs review
+	HIDEWORLDQUEST = "Hide World Quests",
 	HIGHMAUL = "Highmaul", -- Requires localization
 	HILLSBRADFOOTHILLS = "언덕마루 구릉지", -- Needs review
 	HOUROFTWILIGHT = "황혼의 시간",
@@ -445,9 +447,17 @@ qcLocalize = {
 	NYALOTHATHEWALKINGCITY = "Ny'alotha, The Waking City",
 	VISIONSOFNZOTH = "Visions of N'Zoth",
 	BLACKEMPIRECAMPAIGN = "Black Empire Campaign",
-	HIDEWORLDQUEST = "Hide Daily and World Quests",
-	HIDECOMPLETEDQUESTS = "Hide Completed Quests",
 	WORLDQUEST = "World Quests",
+		-- Shadowlands Code
+	SHADOWLANDS = "Shadowlands",
+	ARDENWEALD = "Ardenweald",
+	BASTION = "Bastion",
+	EXILESREACH	= "Exile's Reach",
+	MALDRAXXUS = "Maldraxxus",
+	ORIBOSTHEETERNALCITY = "Oribos, the Eternal City",
+	REVENDRETH = "Revendreth",
+	THEMAW = "The Maw",
+	SHADOWLANDSUNCATEQUEST = "Shadowlands Uncategorized Quests",
 }
 
 end

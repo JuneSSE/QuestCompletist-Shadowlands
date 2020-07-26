@@ -116,12 +116,14 @@ qcLocalize = {
 	HELLFIRERAMPARTS = "Hellfire Ramparts", -- Requires localization
 	HERBALISM = "Herbalism", -- Requires localization
 	HIDECOMPLETEDQUESTS = "Hide Completed Quests", -- Requires localization
+	HIDEDAILYQUEST = "Hide Daily Quests",
 	HIDEINPROGRESSQUESTS = "Hide In-Progress Quests", -- Requires localization
 	HIDELOWLEVELQUESTS = "Hide Low Level Quests", -- Requires localization
 	HIDENONACTIVESEASONALQUESTS = "Hide Non-Active Seasonal Quests", -- Requires localization
 	HIDEOTHERFACTIONQUESTS = "Hide Other Faction Quests", -- Requires localization
 	HIDEOTHERPROFESSIONQUESTS = "Hide Other Profession Quests", -- Requires localization
 	HIDEOTHERRACEANDCLASSQUESTS = "Hide Other Race & Class Quests", -- Requires localization
+	HIDEWORLDQUEST = "Hide World Quests",
 	HIGHMAUL = "Highmaul", -- Requires localization
 	HILLSBRADFOOTHILLS = "Alture di Colletorto", -- Needs review
 	HOUROFTWILIGHT = "Hour of Twilight", -- Requires localization
@@ -445,9 +447,17 @@ qcLocalize = {
 	NYALOTHATHEWALKINGCITY = "Ny'alotha, The Waking City",
 	VISIONSOFNZOTH = "Visions of N'Zoth",
 	BLACKEMPIRECAMPAIGN = "Black Empire Campaign",
-	HIDEWORLDQUEST = "Hide Daily and World Quests",
-	HIDECOMPLETEDQUESTS = "Hide Completed Quests",
 	WORLDQUEST = "World Quests",
+		-- Shadowlands Code
+	SHADOWLANDS = "Shadowlands",
+	ARDENWEALD = "Ardenweald",
+	BASTION = "Bastion",
+	EXILESREACH	= "Exile's Reach",
+	MALDRAXXUS = "Maldraxxus",
+	ORIBOSTHEETERNALCITY = "Oribos, the Eternal City",
+	REVENDRETH = "Revendreth",
+	THEMAW = "The Maw",
+	SHADOWLANDSUNCATEQUEST = "Shadowlands Uncategorized Quests",
 }
 
 end
