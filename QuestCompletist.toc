@@ -1,4 +1,4 @@
-﻿## Interface: 90100
+﻿## Interface: 90002
 ## Version: 109.80
 ## Title: Quest Completist
 ## Notes: Enables you to see what quests you have completed, and what ones you have left to do.

@@ -24,7 +24,7 @@ local qcNewDataAlertTooltip = nil
 local qcMutuallyExclusiveAlertTooltip = nil
 
 --[[ Constants ]]--
-local QCADDON_VERSION = 109.80
+local QCADDON_VERSION = 109.28
 local QCADDON_PURGE = true
 local QCDEBUG_MODE = false
 local QCADDON_CHAT_TITLE = "|CFF9482C9Quest Completist:|r "
@@ -227,6 +227,15 @@ local function qcGetCategoryQuests(categoryId, searchText) -- *
 			end
 		end
 	end
+-- Quest Hide low level
+	--	if (qcSettings.QC_L_HIDE_LOWLEVEL == 1) then
+		--	local questLevel = qcQuestDatabase[questId][3] or 0
+		--	local greenCutoff = (UnitLevel("player") - GetQuestGreenRange())
+		--	if (questLevel < greenCutoff) then
+			--TableRemove(qcPins[i][7],questIndex)
+		--	end	
+		--end	
+		
 --     Bitband Code for Hideing Daily quest
 		if (qcSettings.QC_L_HIDE_DAILYQUEST == 1) then
 			local questType = 4
@@ -262,7 +271,7 @@ local function qcGetCategoryQuests(categoryId, searchText) -- *
 			local qcName, qcTexture, _S, _S, _S, _S, qcProfessionID, _S = GetProfessionInfo(qcEntry)
 		--	qcProfessionBitwise = (qcProfessionBitwise + qcProfessionBits[qcProfessionID])
 			if (qcQuestDatabase[qcQuestID]) and (qcQuestDatabase[qcQuestID][10] > 0) then
-			if (BitBand(qcQuestDatabase[qcQuestID][10], qcProfessionBitwise) == 0) then				
+			if (BitBand(qcQuestDatabase[qcQuestID][10], qcProfessionBitband) == 0) then				
 			--tableRemove(qcCategoryQuests,i)
 			tableRemove(qcProfessionBits,i)
 			end
@@ -379,22 +388,27 @@ function qcUpdateQuestList(categoryId, startIndex, searchText) -- *
 			else
 				questRecord.FactionIcon:Hide()
 			end
-			if not (GetQuestLogIndexByID(questId) == 0) then
+			if not (C_QuestLog.GetLogIndexForQuestID(questId) == 0) then
+--Bfa		if not (GetQuestLogIndexByID(questId) == 0) then
 				local isComplete
-				_, _, _, _, _, isComplete, _, _, _ = GetQuestLogTitle(GetQuestLogIndexByID(questId)) -- TODO: Still same return?
+			--	_, _, _, _, _, C_QuestLog.isComplete, _, _, _ = C_QuestLog.GetTitleForQuestID(C_QuestLog.GetLogIndexForQuestID(questId)) -- TODO: Still same return?
+			--	_, _, _, _, _, isComplete, _, _, _ = C_QuestLog.GetTitleForQuestID(C_QuestLog.GetLogIndexForQuestID(questId)) -- TODO: Still same return?
+			--	_, _, _, _, _, isComplete, _, _, _ = C_QuestLog.GetTitleForLogIndex(questLogIndex)(C_QuestLog.GetLogIndexForQuestID(questId)) -- TODO: Still same return?--Meo Sugestion
+--Bfa		    _, _, _, _, _, isComplete, _, _, _ = GetQuestLogTitle(GetQuestLogIndexByID(questId)) -- TODO: Still same return?
+
 				if (isComplete == nil) then
 					questRecord.QuestIcon:SetTexCoord(unpack(QC_ICON_COORDS_PROGRESS))
 					questRecord.QuestName:SetTextColor(0.5803921568627451, 0.5882352941176471, 0.5803921568627451, 1.0)
 				elseif (isComplete == 1) then
 					questRecord.QuestIcon:SetTexCoord(unpack(QC_ICON_COORDS_READY))
 					questRecord.QuestName:SetTextColor(1.0, 0.8196078431372549, 0.0, 1.0)
-				elseif (isComplete == -1) then
+				elseif (Complete == -1) then
 					questRecord.QuestIcon:SetTexCoord(unpack(QC_ICON_COORDS_NORMAL))
 					questRecord.QuestName:SetTextColor(0.9372549019607843, 0.1490196078431373, 0.0627450980392157, 1.0)
 				end
 			end
 			if (qcCompletedQuests[questId]) then
-				if not ((questType == 2) or (questType == 3)) then
+				if not ((questType == 2) or (questType == 4) or (questType == 128)) then
 					if (qcCompletedQuests[questId]["C"] == 1) then
 						questRecord.QuestIcon:SetTexCoord(unpack(QC_ICON_COORDS_COMPLETE))
 						questRecord.QuestName:SetTextColor(0.0, 1.0, 0.0, 1.0)
@@ -440,7 +454,7 @@ function qcScrollUpdate(value) -- *
 		qcUpdateQuestList(nil, value)
 	end
 end
---Function called doubbled was this an old fix to a blizzard bug?
+
 function qcQueryQuestFlaggedComplete()
 
 	local qcChecked = 0
@@ -448,7 +462,7 @@ function qcQueryQuestFlaggedComplete()
 
 	for qcIndex, qcEntry in pairs(qcQuestDatabase) do
 		qcChecked = (qcChecked + 1)
-		if (IsQuestFlaggedCompleted(qcIndex)) then
+		if (C_QuestLog.IsQuestFlaggedCompleted(qcIndex)) then
 			if not (qcQuestDatabase[qcIndex][6] == 2) or 
 				   (qcQuestDatabase[qcIndex][6] == 4) or 
 				   (qcQuestDatabase[qcIndex][6] == 128) then
@@ -475,7 +489,10 @@ local function qcQuestQueryCompleted()
 	local qcNewFlagged = 0
 	local qcCompletedTable = {}
 
-	GetQuestsCompleted(qcCompletedTable)
+--test C_QuestLog.IsQuestFlaggedCompleted(qcCompletedTable)
+--test IsComplete(qcCompletedTable)
+--BFa	GetQuestsCompleted(qcCompletedTable)
+	C_QuestLog.GetAllCompletedQuestIDs(qcCompletedTable)
 
 	for qcIndex, qcEntry in pairs(qcCompletedTable) do
 		qcCountReturned = (qcCountReturned + 1)
@@ -630,6 +647,7 @@ local function qcZoneChangedNewArea() -- *
 		qcUpdateQuestList(qcCurrentCategoryID,1)
 	end
 end
+
 -- Tooltip when mouse over quest name
 function qcUpdateTooltip(index)
 	local stringFormat = string.format
@@ -641,14 +659,17 @@ function qcUpdateTooltip(index)
 		qcQuestInformationTooltip:SetHyperlink(stringFormat("quest:%d",questId))
 		qcQuestInformationTooltip:AddLine(" ")
 		qcQuestInformationTooltip:AddDoubleLine("Quest ID:", stringFormat("|cFF69CCF0%d|r",questId))
-		if not (qcQuestDatabase[questId][13] == nil) then
-			for qcInitiatorIndex, qcInitiatorEntry in pairs(qcQuestDatabase[questId][13]) do
-				local qcInitiatorID = qcInitiatorEntry[1]
-				local qcInitiatorName = qcInitiatorEntry[2]
-				local qcInitiatorUiMapID = qcInitiatorEntry[3]
-				local qcInitiatorMapLevel = qcInitiatorEntry[4]
-				local qcInitiatorX = qcInitiatorEntry[5]
-				local qcInitiatorY = qcInitiatorEntry[6]
+		qcQuestInformationTooltip:AddLine(" ")
+		qcQuestInformationTooltip:AddDoubleLine("Prerequired Completed Quest/Quests:", stringFormat("|cFF69CCF0%d|r",questtype))
+		qcQuestInformationTooltip:AddLine(" ")
+		if not (qcQuestDatabase[questId][14] == nil) then
+			for qcInitiatorIndex, qcInitiatorEntry in pairs{qcQuestDatabase[questId][14]} do
+			--	local qcInitiatorID = qcInitiatorEntry[1]
+			--	local qcInitiatorName = qcInitiatorEntry[2]
+			--	local qcInitiatorUiMapID = qcInitiatorEntry[3]
+			--	local qcInitiatorMapLevel = qcInitiatorEntry[4]
+			--	local qcInitiatorX = qcInitiatorEntry[5]
+			--	local qcInitiatorY = qcInitiatorEntry[6]
 				if not (qcInitiatorID == 0) then
 					if not (qcInitiatorName == nil) then
 						qcQuestInformationTooltip:AddDoubleLine("Quest Giver:", stringFormat("%s%s [%d]",COLOUR_HUNTER,qcInitiatorName,qcInitiatorID))
@@ -663,9 +684,9 @@ function qcUpdateTooltip(index)
 					end
 				end
 				if not (qcInitiatorMapLevel == 0) then
-					qcQuestInformationTooltip:AddDoubleLine("  - Location:", stringFormat("%s%s, Floor %d @ %.1f,%.1f",COLOUR_HUNTER,tostring(C_Map.GetMapInfo(qcInitiatorUiMapID) or nil),qcInitiatorMapLevel,qcInitiatorX,qcInitiatorY),nil,nil,nil,true)
+					--qcQuestInformationTooltip:AddDoubleLine("  - Location:", stringFormat("%s%s, Floor %d @ %.1f,%.1f",COLOUR_HUNTER,tostring(GetMapNameByID(qcInitiatorUiMapID) or nil),qcInitiatorMapLevel,qcInitiatorX,qcInitiatorY),nil,nil,nil,true)
 				else
-					qcQuestInformationTooltip:AddDoubleLine("  - Location:", stringFormat("%s%s @ %.1f,%.1f",COLOUR_HUNTER,tostring(C_Map.GetMapInfo(qcInitiatorUiMapID) or nil),qcInitiatorX,qcInitiatorY),nil,nil,nil,true)
+					qcQuestInformationTooltip:AddDoubleLine("  - Location:", stringFormat("%s%s @ %.1f,%.1f",COLOUR_HUNTER,tostring(GetMapNameByID(qcInitiatorUiMapID) or nil),qcInitiatorX,qcInitiatorY),nil,nil,nil,true)
 				end
 			end
 		end
@@ -676,7 +697,7 @@ function qcUpdateTooltip(index)
 			qcReputationCount = 0
 			qcQuestReputationTooltip:AddLine(GetText("COMBAT_TEXT_SHOW_REPUTATION_TEXT"))
 			qcQuestReputationTooltip:AddLine(" ")
-			for qcReputationIndex, qcReputationEntry in pairs(qcQuestDatabase[questId][12]) do
+			for qcReputationIndex, qcReputationEntry in pairs{qcQuestDatabase[questId][12]} do
 				qcReputationCount = (qcReputationCount+1)
 				qcQuestReputationTooltip:AddDoubleLine(tostring(qcFactions[qcReputationIndex] or qcReputationIndex), stringFormat("%s%d rep",COLOUR_DRUID,qcReputationEntry))
 			end
@@ -735,7 +756,7 @@ function qcQuestClick(qcButtonIndex)
 			-- print(string.format("%sLooking for quest in db.",QCADDON_CHAT_TITLE))
 			for qcMapIndex, qcMapEntry in pairs(qcPinDB) do
 				for qcInitiatorIndex, qcInitiatorEntry in pairs(qcPinDB[qcMapIndex]) do
-					for qcInitiatorQuestIndex, qcInitiatorQuestEntry in pairs(qcPinDB[qcMapIndex][qcInitiatorIndex][7]) do
+					for qcInitiatorQuestIndex, qcInitiatorQuestEntry in pairs(qcPinDB[qcMapIndex][qcInitiatorIndex][7]) do			
 						if (qcInitiatorQuestEntry == qcQuestID) then
 							-- print(string.format("%sFound quest. Initiator: %s",QCADDON_CHAT_TITLE, qcInitiatorEntry[4]))
 							-- print("/way " .. qcInitiatorEntry[5] .. qcInitiatorEntry[6])
@@ -1139,7 +1160,7 @@ local function qcRefreshPins(UiMapID, mapLevel)
 	if not (WorldMapFrame:IsVisible()) then return nil end
 	qcHideAllPins()
 	wipe(qcPins)
-	if (qcSettings.QC_M_SHOW_ICONS == 0) or (qcPinDB[UiMapID] == nil) then
+	if (qcSettings.QC_M_SHOW_ICONS == 0) or (qcPinDB[UiMapID] == nil) then --
 		wipe(qcPins)
 		return nil
 	end
@@ -1182,7 +1203,7 @@ local function qcRefreshPins(UiMapID, mapLevel)
 		end
 	end
 
-	--[[ Faction ]]--
+	--[[ Map and Quest Faction ]]--
 	if (qcSettings["QC_ML_HIDE_FACTION"] == 1) then
 		for i = #qcPins, 1, -1 do
 			for qcQuestIndex = #qcPins[i][7], 1, -1 do
@@ -1199,7 +1220,7 @@ local function qcRefreshPins(UiMapID, mapLevel)
 		end
 	end
 
-	--[[ Race\Class ]]--
+	--[[  Map and Quest Race\Class ]]--
 	if (qcSettings["QC_ML_HIDE_RACECLASS"] == 1) then
 		for i = #qcPins, 1, -1 do
 			for qcQuestIndex = #qcPins[i][7], 1, -1 do
@@ -1220,7 +1241,7 @@ local function qcRefreshPins(UiMapID, mapLevel)
 		end
 	end
 
-	--[[ Seasonal ]]--
+	--[[ Map Seasonal ]]--
 	if (qcSettings["QC_M_HIDE_SEASONAL"] == 1) then
 		local qcToday = date("%y%m%d")
 		for i = #qcPins, 1, -1 do
@@ -1238,7 +1259,7 @@ local function qcRefreshPins(UiMapID, mapLevel)
 		end
 	end
 
-	--[[ Professions ]]--
+	--[[ Map Professions ]]--
 	if (qcSettings["QC_M_HIDE_PROFESSION"] == 1) then
 		local qcProfessionBitwise = 0
 		local qcProfessions = {GetProfessions()}
@@ -1261,12 +1282,12 @@ local function qcRefreshPins(UiMapID, mapLevel)
 		end
 	end
 
-	--[[ In progress ]]--
+	--[[ Map In progress ]]--
 	if (qcSettings["QC_M_HIDE_INPROGRESS"] == 1) then
 		for i = #qcPins, 1, -1 do
 			for qcQuestIndex = #qcPins[i][7], 1, -1 do
 				local qcQuestID = qcPins[i][7][qcQuestIndex]
-				if (GetQuestLogIndexByID(qcQuestID) ~= 0) then
+				if (C_QuestLog.GetLogIndexForQuestID(questId) ~= 0) then
 					TableRemove(qcPins[i][7], qcQuestIndex)
 				end
 			end
@@ -1407,7 +1428,7 @@ function qcInterfaceOptions_OnShow(self)
     qcListFiltersTitle = self:CreateFontString("qcListFiltersTitle", "ARTWORK", "GameFontNormal")
     qcListFiltersTitle:SetPoint("TOPLEFT", qcConfigSubtitle, "BOTTOMLEFT", 16, -185)
     qcListFiltersTitle:SetText(qcL.QUESTLISTFILTERS)
-
+-- Hide Completed
 	qcIO_L_HIDE_COMPLETED = CreateFrame("CheckButton", "qcIO_L_HIDE_COMPLETED", self, "InterfaceOptionsCheckButtonTemplate")
     qcIO_L_HIDE_COMPLETED:SetPoint("TOPLEFT", qcListFiltersTitle, "BOTTOMLEFT", 16, -6)
 	_G[qcIO_L_HIDE_COMPLETED:GetName().."Text"]:SetText(qcL.HIDECOMPLETEDQUESTS)
@@ -1418,7 +1439,7 @@ function qcInterfaceOptions_OnShow(self)
 			qcSettings.QC_L_HIDE_COMPLETED = 1
 		end
 	end)
-
+-- Hide Lowlevel
 	qcIO_L_HIDE_LOWLEVEL = CreateFrame("CheckButton", "qcIO_L_HIDE_LOWLEVEL", self, "InterfaceOptionsCheckButtonTemplate")
     qcIO_L_HIDE_LOWLEVEL:SetPoint("TOPLEFT", qcIO_L_HIDE_COMPLETED, "BOTTOMLEFT", 0, 0)
 	_G[qcIO_L_HIDE_LOWLEVEL:GetName().."Text"]:SetText(qcL.HIDELOWLEVELQUESTS .. COLOUR_DEATHKNIGHT .. " (Not Yet Implemented)")
@@ -1429,7 +1450,7 @@ function qcInterfaceOptions_OnShow(self)
 			qcSettings.QC_L_HIDE_LOWLEVEL = 1
 		end
 	end)
-
+-- Hide Other Profession
 	qcIO_L_HIDE_PROFESSION = CreateFrame("CheckButton", "qcIO_L_HIDE_PROFESSION", self, "InterfaceOptionsCheckButtonTemplate")
     qcIO_L_HIDE_PROFESSION:SetPoint("TOPLEFT", qcIO_L_HIDE_LOWLEVEL, "BOTTOMLEFT", 0, 0)
 	_G[qcIO_L_HIDE_PROFESSION:GetName().."Text"]:SetText(qcL.HIDEOTHERPROFESSIONQUESTS .. COLOUR_DEATHKNIGHT .. " (Not Yet Implemented)")
@@ -1440,7 +1461,7 @@ function qcInterfaceOptions_OnShow(self)
 			qcSettings.QC_L_HIDE_PROFESSION = 1
 		end
 	end)
---  Interface option code: Hide Daily Quests
+--  Hide Daily Quests
 	qcIO_L_HIDE_DAILYQUEST = CreateFrame("CheckButton", "qcIO_L_HIDE_DAILYQUEST", self, "InterfaceOptionsCheckButtonTemplate")
     qcIO_L_HIDE_DAILYQUEST:SetPoint("TOPLEFT", qcIO_L_HIDE_LOWLEVEL, "BOTTOMLEFT", 0, -25)
 	_G[qcIO_L_HIDE_DAILYQUEST:GetName().."Text"]:SetText(qcL.HIDEDAILYQUEST .. COLOUR_DEATHKNIGHT .. " ")
@@ -1451,7 +1472,7 @@ function qcInterfaceOptions_OnShow(self)
 			qcSettings.QC_L_HIDE_DAILYQUEST = 1
 		end
 	end)
--- 	Interface option code: Hide World Quests
+-- 	Hide World Quests
 	qcIO_L_HIDE_WORLDQUEST = CreateFrame("CheckButton", "qcIO_L_HIDE_WORLDQUEST", self, "InterfaceOptionsCheckButtonTemplate")
   qcIO_L_HIDE_WORLDQUEST:SetPoint("TOPLEFT", qcIO_L_HIDE_LOWLEVEL, "BOTTOMLEFT", 0, -50)
 	_G[qcIO_L_HIDE_WORLDQUEST:GetName().."Text"]:SetText(qcL.HIDEWORLDQUEST .. COLOUR_DEATHKNIGHT .. " ")
@@ -1671,6 +1692,8 @@ local function qcEventHandler(self, event, ...)
 	elseif (event == "UNIT_QUEST_LOG_CHANGED") then
 		if (... == "player") then qcUpdateQuestList(nil, qcMenuSlider:GetValue()) end
 	elseif (event == "ZONE_CHANGED_NEW_AREA") then
+		qcZoneChangedNewArea()		--				
+	elseif (event == "ZONE_CHANGED") then
 		qcZoneChangedNewArea()
 	elseif (event == "QUEST_ITEM_UPDATE") then
 		if (QuestFrame:IsShown()) then QuestFrameNpcNameText:SetText(string.format("%s [%d]",UnitName("questnpc") or "nil",GetQuestID())) end
@@ -1691,7 +1714,7 @@ local function qcEventHandler(self, event, ...)
 			qcNewDataChecks(qcQuestID)
 			qcMutuallyExclusiveChecks(qcQuestID)
 		end
-	elseif (event == "QUEST_COMPLETE") then
+	elseif (event == "QUEST_LOG_UPDATE") then --  trying instead of QUEST_COMPLETE
 		local qcQuestID = GetQuestID()
 		if (QuestFrame:IsShown()) then QuestFrameNpcNameText:SetText(string.format("%s [%d]",UnitName("questnpc") or "nil",GetQuestID())) end
 		if not (qcQuestID == 0) then
@@ -1736,13 +1759,17 @@ function qcQuestCompletistUI_OnLoad(self)
 	self.qcOptionsButton:SetText(GetText("FILTERS"))
 	self:RegisterForDrag("LeftButton")
 	self:RegisterEvent("QUEST_COMPLETE")
+	--self:RegisterEvent("QUEST_FINISHED") -- Cant be used for marking quest complette sinze it marks it done before its turned in 
+	self:RegisterEvent("QUEST_TURNED_IN")  -- Use this instead of QUEST_COMPLETE to fix issues whit some quest not getting marked as completted??
+	self:RegisterEvent("QUEST_LOG_UPDATE")
 	self:RegisterEvent("QUEST_DETAIL")
 	self:RegisterEvent("QUEST_PROGRESS")
 	self:RegisterEvent("QUEST_ACCEPTED")
 	self:RegisterEvent("QUEST_ITEM_UPDATE")
 	self:RegisterEvent("UNIT_QUEST_LOG_CHANGED")
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
-	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+	self:RegisterEvent("ZONE_CHANGED_NEW_AREA") -- 
+	self:RegisterEvent("ZONE_CHANGED")
 	self:RegisterEvent("ADDON_LOADED")
 	self:RegisterEvent("ADVENTURE_MAP_OPEN")
 	self:SetScript("OnEvent", qcEventHandler)

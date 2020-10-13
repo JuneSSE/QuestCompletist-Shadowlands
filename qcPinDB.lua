@@ -7794,6 +7794,8 @@ qcPinDB = {
 		{0,1,161404,"Taran Zhu",84.2,51.6,{58168,58155,58151,58167,58156}},
 		{0,1,160252,"Blacktalon Agent",56.6,31.8,{58168,58155,58151,58167,58156}},
 	},
+	[1533] = {--[[ Bastion ]]--
+	},
 	[1535] = {--[[ Durotar The Dranosh`ar Blockade ]]--
 	},
 	[1536] = {--[[ Maldraxxus ]]--
@@ -7821,5 +7823,9 @@ qcPinDB = {
 	[1574] = {--[[ Mechagon City Under Junk 8.3]]--
 	},
 	[1670] = {--[[ Oribos, the Eternal City]]--
+	},
+	[1701] = {--[[ Heart of the Forest - The Trunk]]--
+	},
+	[1702] = {--[[ Heart of the Forest - The Roots]]--
 	},
 	}
