@@ -24,7 +24,7 @@ local qcNewDataAlertTooltip = nil
 local qcMutuallyExclusiveAlertTooltip = nil
 
 --[[ Constants ]]--
-local QCADDON_VERSION = 109.28
+local QCADDON_VERSION = 109.35
 local QCADDON_PURGE = true
 local QCDEBUG_MODE = false
 local QCADDON_CHAT_TITLE = "|CFF9482C9Quest Completist:|r "
@@ -477,7 +477,7 @@ function qcQueryQuestFlaggedComplete()
 	end
 
 	if (qcNewFlagged > 0) then
-		print(string.format("%s%d quests where checked, and %d previously completed quest(s) have now been updated as such.",QCADDON_CHAT_TITLE,qcChecked,qcNewFlagged))
+		print(string.format("%s%d quests were checked, and %d previously completed quest(s) have now been updated as such.",QCADDON_CHAT_TITLE,qcChecked,qcNewFlagged))
 		qcUpdateQuestList(nil,qcMenuSlider:GetValue())
 	end
 	
@@ -1486,7 +1486,7 @@ function qcInterfaceOptions_OnShow(self)
 
 --- Combined Map and Quest FILTERS
     qcCombinedFiltersTitle = self:CreateFontString("qcCombinedFiltersTitle", "ARTWORK", "GameFontNormal")
-    qcCombinedFiltersTitle:SetPoint("TOPLEFT", qcConfigSubtitle, "BOTTOMLEFT", 16, -350)
+    qcCombinedFiltersTitle:SetPoint("TOPLEFT", qcConfigSubtitle, "BOTTOMLEFT", 16, -345)
     qcCombinedFiltersTitle:SetText(qcL.COMBINEDMAPANDQUESTFILTERS)
 
 	qcIO_ML_HIDE_FACTION = CreateFrame("CheckButton", "qcIO_ML_HIDE_FACTION", self, "InterfaceOptionsCheckButtonTemplate")
@@ -1510,6 +1510,21 @@ function qcInterfaceOptions_OnShow(self)
 			qcSettings.QC_ML_HIDE_RACECLASS = 1
 		end
 	end)
+	--- Debug Mode
+   -- qcDebugTitle = self:CreateFontString("qcDebugTitle", "ARTWORK", "GameFontNormal")
+	--qcDebugTitle:SetPoint("TOPLEFT", qcConfigSubtitle, "BOTTOMLEFT", 16, -430)
+--	qcDebugTitle:SetText(qcL.DEBUG)
+	
+--	qcIO_DB_DEBUG_ENABLE = CreateFrame("CheckButton", "qcIO_DB_DEBUG_ENABLE", self, "InterfaceOptionsCheckButtonTemplate")
+--	qcIO_DB_DEBUG_ENABLE:SetPoint("TOPLEFT", qcDebugTitle, "BOTTOMLEFT", 16, -6)
+--	_G[qcIO_DB_DEBUG_ENABLE:GetName().."Text"]:SetText(qcL.DEBUGENABLE)
+--	qcIO_DB_DEBUG_ENABLE:SetScript("OnClick", function(self)
+	--    if (qcIO_DB_DEBUG_ENABLE:GetChecked() == false) then
+	--	    qcSettings.QC_DB_DEBUG_ENABLE = 0
+	--	else
+	--		qcSettings.QC_DB_DEBUG_ENABLE = 1
+	--	end
+	--end)
 
     self:SetScript("OnShow", qcConfigRefresh) 
     qcConfigRefresh(self)
@@ -1670,6 +1685,11 @@ local function qcApplySettings()
 	else
 		qcIO_ML_HIDE_RACECLASS:SetChecked(true)
 	end
+--	if (qcSettings.QC_DB_DEBUG_ENABLE == 0) then
+--		qcIO_DB_DEBUG_ENABLE:SetChecked(false)
+--	else
+--		qcIO_DB_DEBUG_ENABLE:SetChecked(true)
+--	end
 
 	if (QCADDON_PURGE == true) then
 		if not (qcSettings.PURGED == QCADDON_VERSION) then
