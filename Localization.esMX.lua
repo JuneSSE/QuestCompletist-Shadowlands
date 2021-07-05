@@ -449,7 +449,7 @@ qcLocalize = {
 	VISIONSOFNZOTH = "Visions of N'Zoth",
 	BLACKEMPIRECAMPAIGN = "Black Empire Campaign",
 	WORLDQUEST = "World Quests",
-		-- Shadowlands Code
+	-- Shadowlands Code
 	SHADOWLANDS = "Shadowlands",
 	ARDENWEALD = "Ardenweald",
 	BASTION = "Bastion",
@@ -459,6 +459,11 @@ qcLocalize = {
 	REVENDRETH = "Revendreth",
 	THEMAW = "The Maw",
 	SHADOWLANDSUNCATEQUEST = "Shadowlands Uncategorized Quests",
+	COVENANTCALLINGS = "Covenant Callings",
+	COVENANT = "Kyrian",
+	COVENANT = "Necrolord",
+	COVENANT = "Night Fae",
+	COVENANT = "Venthyr",
 }
 
 end
